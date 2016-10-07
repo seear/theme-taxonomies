@@ -1,10 +1,10 @@
 <?php
 
-$taxonomies = array( 'theme_color', 'theme_column', 'theme_feature', 'theme_layout', 'theme_subject', 'theme_style' );
+$taxonomies = array( 'color', 'column', 'feature', 'layout', 'picks', 'subject', 'style' );
 $table = array();
 
 foreach( $taxonomies as $taxonomy ) {
-	$url = "https://public-api.wordpress.com/rest/v1.1/sites/theme.wordpress.com/taxonomies/$taxonomy/terms";
+	$url = "https://public-api.wordpress.com/rest/v1.1/sites/theme.wordpress.com/taxonomies/theme_$taxonomy/terms";
 	$ch = curl_init( $url );
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$result = json_decode( curl_exec( $ch ), true );
@@ -17,7 +17,3 @@ foreach( $taxonomies as $taxonomy ) {
 }
 
 print( json_encode( $table, JSON_PRETTY_PRINT ) );
-
-
-
-  
